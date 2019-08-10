@@ -1,0 +1,7 @@
+name: WorldAPI
+version: ${project.version}
+main: eu.greev.worldapi.WorldAPI
+commands:
+  loadworld:
+  deleteworld:
+  teleportworld:
