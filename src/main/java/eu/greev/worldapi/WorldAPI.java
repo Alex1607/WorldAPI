@@ -3,6 +3,7 @@ package eu.greev.worldapi;
 import eu.greev.worldapi.api.API;
 import eu.greev.worldapi.commands.DeleteWorldCommand;
 import eu.greev.worldapi.commands.LoadWorldCommand;
+import eu.greev.worldapi.commands.SaveWorldCommand;
 import eu.greev.worldapi.commands.TeleportWorldCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -15,6 +16,7 @@ public final class WorldAPI extends JavaPlugin {
         getCommand("loadworld").setExecutor(new LoadWorldCommand());
         getCommand("deleteworld").setExecutor(new DeleteWorldCommand());
         getCommand("teleportworld").setExecutor(new TeleportWorldCommand());
+        getCommand("saveworld").setExecutor(new SaveWorldCommand());
         System.out.println("WorldAPI loaded");
     }
 

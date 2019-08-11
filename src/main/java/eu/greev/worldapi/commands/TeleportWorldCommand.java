@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 public class TeleportWorldCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(!(sender instanceof Player)){
+        if (!(sender instanceof Player)) {
             sender.sendMessage("You need to be a player to run this command");
             return true;
         }
@@ -23,6 +23,11 @@ public class TeleportWorldCommand implements CommandExecutor {
 
         if (args.length != 1) {
             sender.sendMessage("Please use the following syntax: /teleportworld <name>");
+            return true;
+        }
+
+        if (Bukkit.getWorld(args[0]) == null) {
+            sender.sendMessage("This world does not exist!");
             return true;
         }
 

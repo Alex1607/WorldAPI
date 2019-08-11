@@ -5,3 +5,4 @@ commands:
   loadworld:
   deleteworld:
   teleportworld:
+  saveworld:
