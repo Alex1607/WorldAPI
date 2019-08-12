@@ -20,9 +20,9 @@ import java.util.UUID;
 public class API {
 
     /**
-     * Returns a random File / Folder from a directory
+     * Will return the name of a random File / Dictory in the given folder.
      *
-     * @param path
+     * @param Path of a folder
      * @return
      */
     public String getRandomFile(String path) {
@@ -35,9 +35,9 @@ public class API {
     }
 
     /**
-     * Deletes a given directory with all files and folder in it.
+     * Deletes the directory with all files in it.
      *
-     * @param path
+     * @param Path of the directory to delete
      * @return
      */
     public boolean deleteDirectory(File path) {
@@ -55,9 +55,9 @@ public class API {
     }
 
     /**
-     * Unloads AND deletes a world
+     * Unloads the World and also deletes the directory where the world in saved.
      *
-     * @param world
+     * @param World
      * @return
      */
     public boolean removeWorld(String world) {
@@ -67,7 +67,7 @@ public class API {
     }
 
     /**
-     * Loads a given ZIP File as a world.
+     * Loads a zip file as a world with a given name.
      * @param file ZIP File
      * @return true if the world loaded successful and false if not
      */
