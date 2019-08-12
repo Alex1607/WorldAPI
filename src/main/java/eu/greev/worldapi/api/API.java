@@ -55,7 +55,7 @@ public class API {
     }
 
     /**
-     * Unloads the World and also deletes the directory where the world in saved.
+     * Unloads the World and deletes the directory of the world
      *
      * @param World
      * @return
@@ -97,10 +97,10 @@ public class API {
     }
 
     /**
-     * Loads a given ZIP File as a world and returns the Name of the world. (Random Name!)
+     * Loads a zip file as a world
      *
      * @param file ZIP File
-     * @return Name of the loaded world or null if file is not a ZIP File
+     * @return Name of the loaded world or null if an error has occurred
      */
     public String loadMap(File file) {
         if(file.isDirectory()) {
@@ -131,10 +131,11 @@ public class API {
     }
 
     /**
-     * Saves a world as a zip file. WARNING! It does NOT save the world ingame! Only the folders so do a Bukkit.getWorld(world).save(); befor you run this.
-     * @param world
+     * Saved the dictory of the world.
+     * However it does not save the world ingame. So its best combined with a "Bukkit.getWorld(world).save();"
+     * @param world World that will be saved
      * @param output Requires a path and filename with the .zip extention like: worlds/world.zip
-     * @param compress should the zip file also be compressed or just store the world
+     * @param compress Should the zip file be compressed or just store the world
      * @return true if the world was saved successful and false if not
      */
     public boolean saveMap(String world, File output, boolean compress) {
@@ -172,7 +173,7 @@ public class API {
     }
 
     /**
-     * Loads a world which is already unziped
+     * Loads a world directory if its already in the server folder. If not it will create a new void world.
      *
      * @param worldname
      */
