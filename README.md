@@ -12,7 +12,7 @@ First you have to get the WorldAPI instance. To do so include this code in your 
 after that you have 7 methodes to work with:
 ```
 /**
- * Will return the name of a random File / Dictory in the given folder.
+ * returns the name of a random File / Dictory in the given folder.
  *
  * @param Path of a folder
  * @return
@@ -56,7 +56,7 @@ public String loadMap(File file);
 
 
 /**
- * Saved the dictory of the world.
+ * Saves the mentioned world as an ZIP File.
  * However it does not save the world ingame. So its best combined with a "Bukkit.getWorld(world).save();"
  * @param world World that will be saved
  * @param output Requires a path and filename with the .zip extention like: worlds/world.zip
@@ -67,7 +67,7 @@ public boolean saveMap(String world, File output, boolean compress);
 
 
 /**
- * Loads a world directory if its already in the server folder. If not it will create a new void world.
+ * Loads a world directory if its already in the server folder. If there is non, it will create a new void world.
  *
  * @param worldname
  */
