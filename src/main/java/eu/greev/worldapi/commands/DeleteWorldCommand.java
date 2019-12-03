@@ -15,7 +15,7 @@ public class DeleteWorldCommand implements CommandExecutor {
         }
 
         if (args.length != 1) {
-            sender.sendMessage("Please use the following syntax: /deleteworld <path>");
+            sender.sendMessage("Please use the following syntax: /deleteworld <name>");
             return true;
         }
 
