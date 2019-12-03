@@ -2,7 +2,7 @@
 This WorldAPI was initially made for my server, however I have switched to SWM.
 However, I still think that this API can come in handy for some people, so here is it.
 
-##Information
+## Information
 What I should mention: This is by no means a replacement for a good worldmanager like multiverse, I made this API exclusively for minigames. That's also the reason you are not able to set a worldname and instead will receive an uuid as a string.
 (In case its not clear, my intention was to load a temporary world — hence the uuid — for a minigames and then delete it when its no longer needed)
 
