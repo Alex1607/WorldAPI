@@ -24,7 +24,7 @@ public class DeleteWorldCommand implements CommandExecutor {
             return true;
         }
 
-        if(Bukkit.getWorld(args[0]).getPlayers().size() > 0) {
+        if(!Bukkit.getWorld(args[0]).getPlayers().isEmpty()) {
             sender.sendMessage("You cant delete a world that still has players in it.");
             return true;
         }

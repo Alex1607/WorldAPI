@@ -11,25 +11,24 @@ import org.bukkit.WorldType;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 import java.util.UUID;
 
 public class API {
+    private final Random random = new Random();
 
     /**
-     * Will return the name of a random File / Dictory in the given folder.
+     * Will return the name of a random File / Directory in the given folder.
      *
-     * @param Path of a folder
-     * @return
+     * @param path of a folder
+     * @return String
      */
     public String getRandomFile(String path) {
         final File dir = new File(path);
         String x;
         File[] files = dir.listFiles();
-        int idx = (int) (Math.random() * Objects.requireNonNull(files).length);
+        int idx = this.random.nextInt(Objects.requireNonNull(files).length);
         x = files[idx].getName();
         return x;
     }
@@ -37,8 +36,8 @@ public class API {
     /**
      * Deletes the directory with all files in it.
      *
-     * @param Path of the directory to delete
-     * @return
+     * @param path of the directory to delete
+     * @return boolean
      */
     public boolean deleteDirectory(File path) {
         if (path.exists()) {
@@ -57,7 +56,7 @@ public class API {
     /**
      * Unloads the World and deletes the directory of the world
      *
-     * @param World
+     * @param world
      * @return
      */
     public boolean removeWorld(String world) {
@@ -68,21 +67,19 @@ public class API {
 
     /**
      * Loads a zip file as a world with a given name.
+     *
      * @param file ZIP File
      * @return true if the world loaded successful and false if not
      */
     public boolean loadMap(File file, String name) {
         int i = file.getName().lastIndexOf('.');
-        if(i == 0) {
-            return false;
-        }
-        if(!file.getName().substring(i+1).toLowerCase().equals("zip")) {
+        if (i == 0 || !file.getName().substring(i + 1).equalsIgnoreCase("zip")) {
             return false;
         }
         try {
             ZipFile zipFile = new ZipFile(file);
             File destination = new File(name);
-            if(destination.exists()) {
+            if (destination.exists()) {
                 return false;
             } else {
                 destination.mkdir();
@@ -103,25 +100,22 @@ public class API {
      * @return Name of the loaded world or null if an error has occurred
      */
     public String loadMap(File file) {
-        if(file.isDirectory()) {
+        if (file.isDirectory()) {
             return null;
         }
         int i = file.getName().lastIndexOf('.');
-        if(i == 0) {
+        if (i == 0 || !file.getName().substring(i + 1).equalsIgnoreCase("zip")) {
             return null;
         }
-        if(!file.getName().substring(i+1).toLowerCase().equals("zip")) {
-            return null;
-        }
+
         String name = UUID.randomUUID().toString();
         try {
             ZipFile zipFile = new ZipFile(file);
             File destination = new File(name);
-            if(destination.exists()) {
+            if (destination.exists()) {
                 return null;
-            } else {
-                destination.mkdir();
             }
+            destination.mkdir();
             zipFile.extractAll(name);
         } catch (ZipException e) {
             e.printStackTrace();
@@ -133,8 +127,9 @@ public class API {
     /**
      * Saved the dictory of the world.
      * However it does not save the world ingame. So its best combined with a "Bukkit.getWorld(world).save();"
-     * @param world World that will be saved
-     * @param output Requires a path and filename with the .zip extention like: worlds/world.zip
+     *
+     * @param world    World that will be saved
+     * @param output   Requires a path and filename with the .zip extention like: worlds/world.zip
      * @param compress Should the zip file be compressed or just store the world
      * @return true if the world was saved successful and false if not
      */
@@ -143,7 +138,7 @@ public class API {
         File path = new File(world);
 
         ZipParameters zipParameters = new ZipParameters();
-        if(compress) {
+        if (compress) {
             zipParameters.setCompressionMethod(CompressionMethod.DEFLATE);
         } else {
             zipParameters.setCompressionMethod(CompressionMethod.STORE);
