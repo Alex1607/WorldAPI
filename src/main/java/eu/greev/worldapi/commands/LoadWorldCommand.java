@@ -35,13 +35,13 @@ public class LoadWorldCommand implements CommandExecutor {
                 sender.sendMessage("The world could not be loaded! Please check if the file exists.");
             }
         } else {
-            Object worldname = WorldAPI.getAPI().loadMap(new File(args[0]));
+            String worldname = WorldAPI.getAPI().loadMap(new File(args[0]));
             if (worldname == null) {
                 sender.sendMessage("The world could not be loaded! Please check if the file exists.");
             } else {
                 if (sender instanceof Player) {
                     TextComponent message = new TextComponent("Loaded " + args[0] + " as " + worldname + " in " + (System.currentTimeMillis() - a) + " milliseconds");
-                    message.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, (String) worldname));
+                    message.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, worldname));
                     message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("Click here to copy the uuid in your chat.").create()));
                     ((Player) sender).spigot().sendMessage(message);
                 } else {
