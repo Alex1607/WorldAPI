@@ -8,7 +8,7 @@ What I should mention: This is by no means a replacement for a good worldmanager
 
 ## Usage
 First you have to get the WorldAPI instance. To do so include this code in your @onEnable methode.  
-`worldapi = new WorldAPI().getAPI();`
+`WorldAPI worldapi = WorldAPI.getAPI();`
 after that you have 7 methodes to work with:
 ```java
     /**
