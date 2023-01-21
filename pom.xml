@@ -6,7 +6,7 @@
 
     <groupId>eu.greev</groupId>
     <artifactId>worldapi</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
     <packaging>jar</packaging>
 
     <name>WorldAPI</name>
@@ -74,7 +74,7 @@
         <dependency>
             <groupId>net.lingala.zip4j</groupId>
             <artifactId>zip4j</artifactId>
-            <version>2.1.2</version>
+            <version>2.10.0</version>
         </dependency>
     </dependencies>
 </project>
