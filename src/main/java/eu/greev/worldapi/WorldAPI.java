@@ -1,15 +1,19 @@
 package eu.greev.worldapi;
 
-import eu.greev.worldapi.api.API;
+import eu.greev.worldapi.api.Api;
+import eu.greev.worldapi.api.impl.ApiImpl;
 import eu.greev.worldapi.commands.DeleteWorldCommand;
 import eu.greev.worldapi.commands.LoadWorldCommand;
 import eu.greev.worldapi.commands.SaveWorldCommand;
 import eu.greev.worldapi.commands.TeleportWorldCommand;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.logging.Level;
 
 public final class WorldAPI extends JavaPlugin {
 
-    private static API worldAPI = new API();
+    private static Api worldApi = new ApiImpl();
 
     @Override
     public void onEnable() {
@@ -17,15 +21,16 @@ public final class WorldAPI extends JavaPlugin {
         getCommand("deleteworld").setExecutor(new DeleteWorldCommand());
         getCommand("teleportworld").setExecutor(new TeleportWorldCommand());
         getCommand("saveworld").setExecutor(new SaveWorldCommand());
-        System.out.println("WorldAPI loaded");
+
+        Bukkit.getLogger().log(Level.INFO, "WorldAPI loaded");
     }
 
     @Override
     public void onDisable() {
-        System.out.println("WorldAPI unloaded");
+        Bukkit.getLogger().log(Level.INFO, "WorldAPI unloaded");
     }
 
-    public static API getAPI() {
-        return worldAPI;
+    public static Api getAPI() {
+        return worldApi;
     }
 }

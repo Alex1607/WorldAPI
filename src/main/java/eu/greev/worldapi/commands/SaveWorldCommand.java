@@ -7,6 +7,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 import java.io.File;
+import java.time.Instant;
 
 public class SaveWorldCommand implements CommandExecutor {
     @Override
@@ -26,12 +27,12 @@ public class SaveWorldCommand implements CommandExecutor {
             return true;
         }
 
-        long a = System.currentTimeMillis();
+        Instant start = Instant.now();
 
         Bukkit.getWorld(args[0]).save();
         boolean success = WorldAPI.getAPI().saveMap(args[0], new File(args[1]), true);
         if (success) {
-            sender.sendMessage("Saved " + args[0] + " as " + args[1] + " in " + (System.currentTimeMillis() - a) + " milliseconds");
+            sender.sendMessage(String.format("Saved %s as %s in %d milliseconds", args[0], args[1], Instant.now().minusMillis(start.toEpochMilli()).toEpochMilli()));
         } else {
             sender.sendMessage("The world could not be saved!");
         }
